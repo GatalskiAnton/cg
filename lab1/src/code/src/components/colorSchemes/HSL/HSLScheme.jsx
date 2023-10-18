@@ -15,7 +15,7 @@ const HSLScheme = ({hslColor, setColor}) => {
                     <td>H</td>
                     <td><input type="range"
                                onChange={(e) => setColor(hslToRgb({...hslColor, h: e.target.value / 360}))}
-                               min="0" max="360" step="1" value={Math.round(hslColor.h * 360)} id="h-slider"/></td>
+                               min="0" max="359" step="1" value={Math.round(hslColor.h * 360)} id="h-slider"/></td>
                     <td><input
                         onChange={(e) => setColor(hslToRgb({...hslColor, h: e.target.value / 360}))}
 
