@@ -1,7 +1,14 @@
 import React from 'react';
 
 const RgbScheme = ({rgbColor, setColor}) => {
+    function onChangeHandler(e) {
+        
+        setColor({...rgbColor, r: e.target.value})
+
+    }
+
     return (
+
         <div style={{display:'inline-block'}}>
             <table>
                 <thead>
@@ -12,7 +19,7 @@ const RgbScheme = ({rgbColor, setColor}) => {
                 <tbody>
                 <tr>
                     <td>R</td>
-                    <td><input onChange={(e) => setColor({...rgbColor, r: e.target.value})} type="range" min="0"
+                    <td><input  onChange={(e) =>  setColor({...rgbColor, r: e.target.value})} type="range" min="0"
                                max="255" step="1" value={rgbColor.r} id="r-slider"/></td>
                     <td><input onChange={(e) => setColor({...rgbColor, r: e.target.value})} style={{width: '40px'}}
                                type="number" min="0" max="255" value={rgbColor.r}/></td>
