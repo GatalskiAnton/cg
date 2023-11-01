@@ -91,7 +91,11 @@ def show_bernsen_image():
     global original_image_th
     if original_image_th:
         open_cv_image = np.array(original_image_th)
-        modified_image = bernsen(open_cv_image, 15, 15)
+        if open_cv_image.ndim == 2 or (open_cv_image.ndim == 3 and open_cv_image.shape[2] == 1):
+            grayImage = open_cv_image  
+        else:
+            grayImage = cv2.cvtColor(open_cv_image, cv2.COLOR_BGR2GRAY)
+        modified_image = bernsen(grayImage, 15, 15)
         pil_image = Image.fromarray(modified_image)
         active_image_th = pil_image.copy()
         photo = ImageTk.PhotoImage(pil_image)
@@ -103,7 +107,12 @@ def show_niblack_image():
     global original_image_th
     if original_image_th:
         open_cv_image = np.array(original_image_th)
-        modified_image = niblack_threshold(open_cv_image, 15, -0.2)
+        if open_cv_image.ndim == 2 or (open_cv_image.ndim == 3 and open_cv_image.shape[2] == 1):
+            grayImage = open_cv_image  
+        else:
+            grayImage = cv2.cvtColor(open_cv_image, cv2.COLOR_BGR2GRAY)
+
+        modified_image = niblack_threshold(grayImage, 15, -0.2)
         pil_image = Image.fromarray(modified_image)
         active_image_th = pil_image
         photo = ImageTk.PhotoImage(pil_image)
