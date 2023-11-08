@@ -56,7 +56,8 @@ def open_image_th():
     file_path = filedialog.askopenfilename(filetypes=[("Image files", "*.jpg *.png *.jpeg *.gif *.bmp")])
     if file_path:
         original_image_th = Image.open(file_path)
-        photo = ImageTk.PhotoImage(original_image_th)
+        resized_image = Image.fromarray(cv2.resize(np.array(original_image_th),(250,(int)(250 * (original_image_th.height / original_image_th.width)))))
+        photo = ImageTk.PhotoImage(resized_image)
         image_label_th.config(image=photo)
         image_label_th.image = photo
 
@@ -66,8 +67,8 @@ def open_image_sharpen():
         global original_image_sharpen
         global active_image_sharpen
         original_image_sharpen = Image.open(file_path)
-        active_image_sharpen = original_image_th
-        photo = ImageTk.PhotoImage(original_image_sharpen)
+        resized_image = Image.fromarray(cv2.resize(np.array(original_image_sharpen),(250,(int)(250 * (original_image_sharpen.height / original_image_sharpen.width)))))
+        photo = ImageTk.PhotoImage(resized_image)
         image_label_sharpen.config(image=photo)
         image_label_sharpen.image = photo
 
@@ -77,7 +78,6 @@ def save_image_th():
         file_path = filedialog.asksaveasfilename(defaultextension=".jpg", filetypes=[("JPEG files", "*.jpg")])
         if file_path:
             active_image_th.save(file_path, format="JPEG", quality=80)
-
 
 def save_image_sharpen():
     global active_image_sharpen
@@ -98,7 +98,8 @@ def show_bernsen_image():
         modified_image = bernsen(grayImage, 15, 15)
         pil_image = Image.fromarray(modified_image)
         active_image_th = pil_image.copy()
-        photo = ImageTk.PhotoImage(pil_image)
+        resized_image = Image.fromarray(cv2.resize(np.array(pil_image), (250,(int)(250 * (pil_image.height / pil_image.width)))))
+        photo = ImageTk.PhotoImage(resized_image)
         image_label_th.config(image=photo)
         image_label_th.image = photo
 
@@ -114,8 +115,9 @@ def show_niblack_image():
 
         modified_image = niblack_threshold(grayImage, 15, -0.2)
         pil_image = Image.fromarray(modified_image)
-        active_image_th = pil_image
-        photo = ImageTk.PhotoImage(pil_image)
+        active_image_th = pil_image.copy()
+        resized_image = Image.fromarray(cv2.resize(np.array(pil_image), (250,(int)(250 * (pil_image.height / pil_image.width)))))
+        photo = ImageTk.PhotoImage(resized_image)
         image_label_th.config(image=photo)
         image_label_th.image = photo
 
@@ -126,8 +128,9 @@ def show_sharpen_image():
         open_cv_image = np.array(original_image_sharpen)
         modified_image = sharpen_image(open_cv_image)
         pil_image = Image.fromarray(modified_image)
-        active_image_sharpen = pil_image
-        photo = ImageTk.PhotoImage(pil_image)
+        active_image_sharpen = pil_image.copy()
+        resized_image = Image.fromarray(cv2.resize(np.array(pil_image), (250,(int)(250 * (pil_image.height / pil_image.width)))))
+        photo = ImageTk.PhotoImage(resized_image)
         image_label_sharpen.config(image=photo)
         image_label_sharpen.image = photo
 
