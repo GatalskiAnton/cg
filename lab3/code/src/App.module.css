@@ -1,0 +1,46 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.canvasContainer{
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.inputContainer{
+
+
+}
+
+.inputContainer input{
+}
+
+.coordinatesContainer{
+    justify-content: space-around;
+    display: flex;
+}
+
+.coordinatesContainer > div{
+    display: inline-block;
+}
+
+.point span{
+    display: block;
+}
+
+
+.logContainer{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.logHeader{
+    display: block;
+}
+
+.logMessage{
+}
