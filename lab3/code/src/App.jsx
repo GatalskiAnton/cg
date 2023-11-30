@@ -124,12 +124,13 @@ function App() {
                     <div className={classes.point}>
                         <span>Start point</span>
                         <div>x
-                            <input max={27} min={0} onChange={(e) => {
+                            <input max={27} min={0} onChange={(e) => { 
                                 setCoordinates({...coordinates, x1: Number(e.target.value)})
                             }} type="number"/>
                         </div>
                         <div>y
                             <input max={27} min={0} onChange={(e) => {
+
                                 setCoordinates({...coordinates, y1: Number(e.target.value)})
                             }} type="number"/>
                         </div>

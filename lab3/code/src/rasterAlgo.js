@@ -23,12 +23,12 @@ export function drawBresenham(x1, y1, x2, y2, step, setLogs) {
         if (2 * error >= dy && x1 !== x2) {
             error += dy;
             x1 += sx;
-            bLog.push(`case: 2 * error >= dy, shift x to ${sx / step}, error decreases on ${Math.abs(dy)}`)
+            bLog.push(`case: 2 * error >= dy, shift x to ${sx / step}, error decreases  on ${Math.abs((dy - 3 * step)/step)}`)
         }
         if (2 * error <= dx && y1 !== y2) {
             error += dx;
             y1 += sy;
-            bLog.push(`case: 2 * error <= dx, shift y to ${sy / step}, error increases on ${Math.abs(dx)}`)
+            bLog.push(`case: 2 * error <= dx, shift y to ${sy / step}, error increases on ${Math.abs((dx - 3 * step)/step)}`)
         }
     }
     setLogs(bLog)
